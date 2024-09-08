@@ -39,4 +39,9 @@ dependencies {
     implementation(libs.androidx.work)
     implementation(libs.koin.android.workmanager)
     implementation(libs.kotlinx.serialization.json)
+
+    implementation(project(":core:domain"))
+    implementation(project(":run:domain"))
+    implementation(project(":core:database"))
+
 }

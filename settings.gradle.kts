@@ -19,7 +19,12 @@ dependencyResolutionManagement {
     }
 }
 
+
+//enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+//enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "Run"
+
+//enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
 include(":auth:data")
 include(":auth:domain")

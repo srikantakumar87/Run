@@ -38,4 +38,7 @@ dependencies {
     implementation(libs.google.maps.android.compose)
     implementation(libs.androidx.activity.compose)
     implementation(libs.timber)
+
+    implementation(project(":core:domain"))
+    implementation(project(":run:domain"))
 }
