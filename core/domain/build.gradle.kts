@@ -7,3 +7,6 @@ java {
     sourceCompatibility = JavaVersion.VERSION_20
     targetCompatibility = JavaVersion.VERSION_20
 }
+dependencies{
+    implementation(libs.kotlinx.coroutines.core)
+}
