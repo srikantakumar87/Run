@@ -1,9 +1,10 @@
 plugins {
 
+    alias(libs.plugins.run.android.application.compose)
+    alias(libs.plugins.compose.compiler)
 
     alias(libs.plugins.mapsplatform.secrets.plugin)
-    alias(libs.plugins.run.android.application)
-    alias(libs.plugins.compose.compiler)
+
     //kotlin("jvm") version "2.0.20"
 
 }
@@ -29,12 +30,8 @@ android {
 
 
 
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
+
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
