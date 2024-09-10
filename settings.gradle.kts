@@ -1,6 +1,6 @@
 pluginManagement {
+includeBuild("build-logic")
 
-    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -22,11 +22,10 @@ dependencyResolutionManagement {
 }
 
 
-//enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-//enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 rootProject.name = "Run"
 
-//enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
 include(":auth:data")
 include(":auth:domain")
@@ -36,9 +35,7 @@ include(":core:presentation:ui")
 include(":core:domain")
 include(":core:data")
 include(":core:database")
-include(":run:data")
-include(":run:domain")
-include(":run:presentation")
-include(":run:location")
-include(":run:network")
+
+
+
 

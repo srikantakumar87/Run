@@ -1,22 +1,24 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.compose.compiler)
+
+
     alias(libs.plugins.mapsplatform.secrets.plugin)
+    alias(libs.plugins.run.android.application)
+    alias(libs.plugins.compose.compiler)
+    //kotlin("jvm") version "2.0.20"
+
 }
 
 android {
     namespace = "com.sri.run"
-    compileSdk = 34
+
 
     defaultConfig {
-        applicationId = "com.sri.run"
-        minSdk = 24
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+
+
+            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+            vectorDrawables {
+                useSupportLibrary = true
+            }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -33,13 +35,9 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = JvmTarget.JVM_11.target
-    }
+
+
+
     buildFeatures {
         compose = true
     }
@@ -95,22 +93,22 @@ dependencies {
     implementation(libs.timber)
 
 
-    implementation(project(":core:presentation:designsystem"))
-    implementation(project(":core:presentation:ui"))
+    implementation(projects.core.presentation.designsystem)
+    implementation(projects.core.presentation.ui)
 
-    implementation(project(":core:domain"))
-    implementation(project(":core:data"))
-    implementation(project(":core:database"))
+    implementation(projects.core.domain)
+    implementation(projects.core.data)
+    implementation(projects.core.database)
 
-    implementation(project(":auth:presentation"))
-    implementation(project(":auth:data"))
-    implementation(project(":auth:domain"))
+    implementation(projects.auth.presentation)
+    implementation(projects.auth.data)
+    implementation(projects.auth.domain)
 
-    implementation(project(":run:domain"))
-    implementation(project(":run:data"))
-    implementation(project(":run:presentation"))
-    implementation(project(":run:location"))
-    implementation(project(":run:network"))
+
+
+
+
+
 
 
 }

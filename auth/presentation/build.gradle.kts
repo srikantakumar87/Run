@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.jetbrainsKotlinAndroid)
 }
 
 android {
@@ -35,7 +35,8 @@ android {
 }
 
 dependencies {
-  implementation(project(":core:domain"))
-  implementation(project(":auth:domain"))
+    implementation(projects.core.domain)
+    implementation(projects.auth.domain)
+
   //implementation(projects.auth.domain)
 }

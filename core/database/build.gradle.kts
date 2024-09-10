@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.jetbrainsKotlinAndroid)
 }
 
 android {
@@ -35,6 +35,6 @@ android {
 dependencies {
 
     implementation(libs.org.mongodb.bson)
-    implementation(project(":core:domain"))
+    implementation(projects.core.domain)
 
 }
