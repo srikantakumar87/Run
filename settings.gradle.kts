@@ -39,3 +39,8 @@ include(":core:database")
 
 
 
+include(":runs:data")
+include(":runs:domain")
+include(":runs:presentation")
+include(":runs:location")
+include(":runs:network")

@@ -1,17 +1,15 @@
 plugins {
     alias(libs.plugins.run.android.library)
     alias(libs.plugins.compose.compiler)
-
 }
 
 android {
-    namespace = "com.sri.core.data"
+    namespace = "com.sri.runs.network"
+
 }
 
 dependencies {
 
-    implementation(libs.timber)
     implementation(projects.core.domain)
-    implementation(projects.core.database)
-
+    implementation(projects.core.data)
 }
