@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.run.android.library)
-    alias(libs.plugins.compose.compiler)
+    //alias(libs.plugins.compose.compiler)
+
+
 
 }
 
@@ -11,6 +13,7 @@ android {
 dependencies {
 
     implementation(libs.timber)
+    implementation(libs.bundles.koin)
     implementation(projects.core.domain)
     implementation(projects.core.database)
 
