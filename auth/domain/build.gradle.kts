@@ -1,10 +1,9 @@
 plugins {
 
-    alias(libs.plugins.org.jetbrains.kotlin.jvm)
+    alias(libs.plugins.run.jvm.library)
 
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_20
-    targetCompatibility = JavaVersion.VERSION_20
+dependencies{
+    implementation(projects.core.domain)
 }

@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.run.android.library)
-    //alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.compose.compiler)
 
 
 
