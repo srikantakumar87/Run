@@ -13,24 +13,18 @@ internal fun Project.configureKotlinAndroid(
     commonExtension: CommonExtension<*, *, *, *, *, *>
 ) {
     commonExtension.apply {
-        buildFeatures {
-            compose = true
-        }
-
-       
-
         compileSdk = libs.findVersion("projectCompileSdkVersion").get().toString().toInt()
 
         defaultConfig.minSdk = libs.findVersion("projectMinSdkVersion").get().toString().toInt()
 
         compileOptions {
             isCoreLibraryDesugaringEnabled = true
-            sourceCompatibility = JavaVersion.VERSION_20
-            targetCompatibility = JavaVersion.VERSION_20
+            sourceCompatibility = JavaVersion.VERSION_11
+            targetCompatibility = JavaVersion.VERSION_11
         }
     }
 
-
+    configureKotlin()
 
     dependencies {
         "coreLibraryDesugaring"(libs.findLibrary("desugar.jdk.libs").get())
@@ -38,10 +32,9 @@ internal fun Project.configureKotlinAndroid(
 }
 
 internal fun Project.configureKotlinJvm() {
-    extensions.configure<JavaPluginExtension>{
-        sourceCompatibility = JavaVersion.VERSION_20
-        targetCompatibility = JavaVersion.VERSION_20
-
+    extensions.configure<JavaPluginExtension> {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     configureKotlin()
 }
@@ -49,7 +42,7 @@ internal fun Project.configureKotlinJvm() {
 private fun Project.configureKotlin() {
     tasks.withType<KotlinCompile>().configureEach {
         kotlinOptions {
-            jvmTarget = JavaVersion.VERSION_20.toString()
+            jvmTarget = JavaVersion.VERSION_11.toString()
         }
     }
 }

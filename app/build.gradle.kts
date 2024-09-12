@@ -1,9 +1,12 @@
 plugins {
 
     alias(libs.plugins.run.android.application.compose)
-    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.run.jvm.ktor)
+
+
 
     alias(libs.plugins.mapsplatform.secrets.plugin)
+    alias(libs.plugins.compose.compiler)
 
     //kotlin("jvm") version "2.0.20"
 

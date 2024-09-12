@@ -6,7 +6,7 @@ import com.sri.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.dependencies
+
 
 
 class AndroidApplicationConventionPlugin: Plugin<Project> {
@@ -18,7 +18,7 @@ class AndroidApplicationConventionPlugin: Plugin<Project> {
                 apply("org.jetbrains.kotlin.android")
             }
             extensions.configure<ApplicationExtension> {
-                configureKotlinAndroid(this)
+
                 defaultConfig {
                     applicationId = libs.findVersion("projectApplicationId").get().toString()
                     targetSdk = libs.findVersion("projectTargetSdkVersion").get().toString().toInt()
@@ -27,11 +27,11 @@ class AndroidApplicationConventionPlugin: Plugin<Project> {
                     versionName = libs.findVersion("projectVersionName").get().toString()
                 }
 
+                configureKotlinAndroid(this)
 
 
-                dependencies {
-                    "coreLibraryDesugaring"(libs.findLibrary("desugar.jdk.libs").get())
-                }
+
+
 
                 configureBuildTypes(
                     commonExtension = this,

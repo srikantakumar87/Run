@@ -2,13 +2,7 @@ pluginManagement {
 includeBuild("build-logic")
 
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
+        google ()
         mavenCentral()
         gradlePluginPortal()
     }
@@ -21,7 +15,7 @@ dependencyResolutionManagement {
     }
 }
 
-
+gradle.startParameter.excludedTaskNames.addAll(listOf(":build-logic:convention:testClasses"))
 
 rootProject.name = "Run"
 
@@ -35,10 +29,6 @@ include(":core:presentation:ui")
 include(":core:domain")
 include(":core:data")
 include(":core:database")
-
-
-
-
 include(":runs:data")
 include(":runs:domain")
 include(":runs:presentation")
