@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,6 +23,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sri.auth.presentation.R
+import com.sri.core.designsystem.components.RunActionButton
+import com.sri.core.designsystem.components.RunOutlinedActionButton
 
 
 @Composable
@@ -53,6 +56,43 @@ fun IntroScreen(
 
         ){
             RunLogoVertical()
+
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+                .padding(bottom = 48.dp)
+        ) {
+            Text(
+                text = stringResource(id = R.string.welcome_to_run),
+                fontSize = 20.sp,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+            Spacer(modifier = Modifier.height(12.dp))
+            Text(
+                text = stringResource(id = R.string.run_description),
+                style = MaterialTheme.typography.bodySmall,
+
+            )
+            Spacer(modifier = Modifier.height(32.dp))
+            RunOutlinedActionButton(
+                text = stringResource(id = R.string.sign_in),
+                isLoading = false,
+                onClick = { onAction(IntroAction.OnSignInClick) },
+                modifier = Modifier.fillMaxWidth(),
+
+                )
+
+            Spacer(modifier = Modifier.height(16.dp))
+            RunActionButton(
+                text = stringResource(id = R.string.sign_up),
+                isLoading = false,
+                onClick = { onAction(IntroAction.OnSignInClick) },
+                modifier = Modifier.fillMaxWidth(),
+
+                )
+
 
         }
     }

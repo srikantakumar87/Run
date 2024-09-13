@@ -41,47 +41,30 @@ fun GradientBackground(
         smallDimension.roundToPx()
     }
     val primaryColor = MaterialTheme.colorScheme.primary
-    val isAtleastAndroid12 = Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S
+    val isAtLeastAndroid12 = Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S
 
     Box(
         modifier = modifier
             .fillMaxSize()
-            .then(
-                if(isAtleastAndroid12){
-                    Modifier.blur(
-                        smallDimension / 3f
-                    )
-                }
-                else Modifier
-            )
-            .background(
-                brush = Brush.radialGradient(
-                    colors = listOf(
-                        if(isAtleastAndroid12) primaryColor else primaryColor.copy(alpha = 0.3f),
-                        MaterialTheme.colorScheme.background
-                    ),
-                    center = Offset(
-                        x = screenWidthPx / 2f,
-                        y = -100f
-                    )
-                    ,
-                    radius = smallDimensionPx/2f
-                )
-            )
+            .background( MaterialTheme.colorScheme.background )
     ){
         Box(
             modifier = modifier
                 .fillMaxSize()
+                .then(
+                    if (isAtLeastAndroid12) {
+                        Modifier.blur(smallDimension / 3f)
+                    } else Modifier
+                )
                 .background(
                     brush = Brush.radialGradient(
                         colors = listOf(
-                            primaryColor,
+                            if (isAtLeastAndroid12) primaryColor else primaryColor.copy(alpha = 0.3f),
                             MaterialTheme.colorScheme.background
                         ),
                         center = Offset(
                             x = screenWidthPx / 2f,
                             y = -100f
-
                         ),
                         radius = smallDimensionPx / 2f
                     )
