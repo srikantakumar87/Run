@@ -27,6 +27,7 @@ internal fun Project.configureKotlinAndroid(
     configureKotlin()
 
     dependencies {
+        //"implementation"("androidx.compose.runtime:runtime:1.0.0")
         "coreLibraryDesugaring"(libs.findLibrary("desugar.jdk.libs").get())
     }
 }

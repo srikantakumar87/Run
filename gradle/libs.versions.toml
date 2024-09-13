@@ -130,6 +130,7 @@ androidDynamicFeature = { id = "com.android.dynamic-feature", version.ref = "agp
 mapsplatform-secrets-plugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secretsPlugin"}
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
+
 run-android-application = { id = "run.android.application", version = "unspecified" }
 run-android-application-compose = { id = "run.android.application.compose", version = "unspecified" }
 run-android-library = { id = "run.android.library", version = "unspecified" }

@@ -12,7 +12,13 @@ internal fun Project.configureAndroidCompose(
         buildFeatures{
             compose = true
         }
+
+
         dependencies {
+            //"implementation"("androidx.compose.runtime:runtime:1.6.6")
+            //"implementation"("androidx.compose.runtime:runtime-livedata:1.5.1")
+            //"implementation"("androidx.compose.runtime:runtime-rxjava2:1.5.1")
+
             val bom = libs.findLibrary("androidx.compose.bom").get()
             "implementation"(platform(bom))
             "androidTestImplementation"(platform(bom))
