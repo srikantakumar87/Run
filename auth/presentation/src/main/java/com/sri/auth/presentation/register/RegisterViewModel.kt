@@ -1,3 +1,4 @@
+@file:Suppress("OPT_IN_USAGE_FUTURE_ERROR")
 package com.sri.auth.presentation.register
 
 import androidx.compose.runtime.getValue
