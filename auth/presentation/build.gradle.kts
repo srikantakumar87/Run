@@ -10,6 +10,7 @@ android {
 dependencies {
     implementation(projects.core.domain)
     implementation(projects.auth.domain)
+    implementation(libs.androidx.navigation.runtime.ktx)
 
-  //implementation(projects.auth.domain)
+    //implementation(projects.auth.domain)
 }
