@@ -3,6 +3,7 @@ package com.sri.run
 import android.app.Application
 import com.sri.auth.data.di.authDataModule
 import com.sri.auth.presentation.di.authViewModelModule
+import com.sri.core.data.di.coreDataModule
 import com.sri.run.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -23,7 +24,9 @@ class RunApp: Application() {
             modules(
                 authDataModule,
                 authViewModelModule,
-                appModule
+                appModule,
+                coreDataModule
+
             )
 
 

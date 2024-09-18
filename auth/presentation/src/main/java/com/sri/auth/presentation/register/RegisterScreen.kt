@@ -1,5 +1,6 @@
 package com.sri.auth.presentation.register
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -21,6 +22,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -49,6 +52,7 @@ import com.sri.auth.domain.UserDataValidator
 import com.sri.core.presentation.designsystem.components.RunActionButton
 import com.sri.core.presentation.designsystem.components.RunPasswordTextField
 import com.sri.core.presentation.designsystem.components.SBasicSecureTextField
+import com.sri.core.presentation.ui.ObserveAsEvent
 
 @Composable
 fun RegisterScreenRoot(
@@ -56,6 +60,36 @@ fun RegisterScreenRoot(
     onSuccessfulRegistration: () -> Unit,
     viewModel: RegisterViewModel = koinViewModel(),
 ) {
+    val context = LocalContext.current
+    val keyboardController = LocalSoftwareKeyboardController.current
+    ObserveAsEvent(viewModel.events){ event->
+        when(event){
+            is RegisterEvent.Error -> {
+                keyboardController?.hide()
+                Toast.makeText(
+                    context,
+                    event.error.asString(context),
+                    Toast.LENGTH_SHORT
+
+                ).show()
+                // Handle error event
+            }
+
+            RegisterEvent.RegistrationSuccess -> {
+                keyboardController?.hide()
+                Toast.makeText(
+                    context,
+                    R.string.registration_success,
+                    Toast.LENGTH_SHORT
+
+                ).show()
+
+
+            }
+        }
+
+    }
+
 
     RegisterScreen(
         state = viewModel.state,

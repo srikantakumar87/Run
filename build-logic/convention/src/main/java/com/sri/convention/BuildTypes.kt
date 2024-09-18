@@ -28,7 +28,7 @@ internal fun Project.configureBuildTypes(
                 extensions.configure<ApplicationExtension>{
                     buildTypes{
                         debug{
-                            configureDebugBuildType("apiKey")
+                            configureDebugBuildType(apiKey)
 
                         }
                         release{
@@ -44,7 +44,7 @@ internal fun Project.configureBuildTypes(
                 extensions.configure<LibraryExtension>{
                     buildTypes{
                         debug{
-                            configureDebugBuildType("apiKey")
+                            configureDebugBuildType(apiKey)
 
                         }
                         release{
@@ -63,13 +63,13 @@ internal fun Project.configureBuildTypes(
 }
 
 private fun BuildType.configureDebugBuildType(apiKey: String){
-    buildConfigField("String", "API_KEY", "\"apiKey\"")
+    buildConfigField("String", "API_KEY", "\"$apiKey\"")
     buildConfigField("String", "BASE_URL", "\"https://runique.pl-coding.com:8080\"")
 }
 private fun BuildType.configureReleaseBuildType(
     commonExtension: CommonExtension<*, *, *, *, *, *>,
     apiKey: String){
-    buildConfigField("String", "API_KEY", "\"apiKey\"")
+    buildConfigField("String", "API_KEY", "\"$apiKey\"")
     buildConfigField("String", "BASE_URL", "\"https://runique.pl-coding.com:8080\"")
 
 

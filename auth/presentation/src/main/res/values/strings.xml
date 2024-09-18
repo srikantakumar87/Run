@@ -19,4 +19,6 @@
     <string name="register">Register</string>
     <string name="already_have_an_account">Already have an account</string>
     <string name="registration_successful">Registration Successfull</string>
+    <string name="error_email_exists">A user with that email already exists</string>
+    <string name="registration_success">Registration Successfull you can log in now</string>
 </resources>
