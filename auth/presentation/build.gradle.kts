@@ -11,6 +11,7 @@ dependencies {
     implementation(projects.core.domain)
     implementation(projects.auth.domain)
     implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.room.ktx)
 
     //implementation(projects.auth.domain)
 }

@@ -1,4 +1,4 @@
-package com.sri.core.ui
+package com.sri.core.presentation.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

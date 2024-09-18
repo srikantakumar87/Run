@@ -13,9 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.sri.core.designsystem.LogoIcon
-import com.sri.core.designsystem.RunTheme
-import com.sri.core.designsystem.components.GradientBackground
+import com.sri.core.presentation.designsystem.LogoIcon
+import com.sri.core.presentation.designsystem.RunTheme
+import com.sri.core.presentation.designsystem.components.GradientBackground
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.ui.res.stringResource
@@ -23,15 +23,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sri.auth.presentation.R
-import com.sri.core.designsystem.components.RunActionButton
-import com.sri.core.designsystem.components.RunOutlinedActionButton
+import com.sri.core.presentation.designsystem.components.RunActionButton
+import com.sri.core.presentation.designsystem.components.RunOutlinedActionButton
 
 
 @Composable
 fun IntroScreenRoot(
     onSignUpClick: () -> Unit,
-    onSignInClick: () -> Unit,
-    onAction: (IntroAction) -> Unit,
+    onSignInClick: () -> Unit
+
 ){
     IntroScreen(
         onAction = { action ->
@@ -88,7 +88,7 @@ fun IntroScreen(
             RunActionButton(
                 text = stringResource(id = R.string.sign_up),
                 isLoading = false,
-                onClick = { onAction(IntroAction.OnSignInClick) },
+                onClick = { onAction(IntroAction.OnSignUpClick) },
                 modifier = Modifier.fillMaxWidth(),
 
                 )

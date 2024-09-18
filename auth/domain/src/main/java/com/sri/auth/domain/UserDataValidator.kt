@@ -5,6 +5,7 @@ class UserDataValidator(
 ) {
 
     fun isValidEmail(email: String): Boolean {
+        println("Validating email: $email")
         return patternValidator.matches(email.trim())
     }
     fun validatePassword(password: String): PasswordValidationState {
@@ -25,3 +26,4 @@ class UserDataValidator(
         const val MIN_PASSWORD_LENGTH = 9
     }
 }
+
