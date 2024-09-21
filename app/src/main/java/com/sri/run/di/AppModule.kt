@@ -7,8 +7,11 @@ import com.sri.auth.data.EmailPatternValidator
 import com.sri.auth.domain.PatternValidator
 import com.sri.auth.domain.UserDataValidator
 import org.koin.android.ext.koin.androidApplication
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
+import com.sri.run.MainViewModel
 
 val appModule = module {
 
@@ -22,5 +25,7 @@ val appModule = module {
 
        )
     }
+
+    viewModelOf(::MainViewModel)
 
 }
