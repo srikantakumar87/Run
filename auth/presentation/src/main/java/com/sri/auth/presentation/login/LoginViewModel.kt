@@ -10,17 +10,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sri.auth.domain.AuthRepository
 import com.sri.auth.domain.UserDataValidator
+import com.sri.auth.presentation.R
 import com.sri.auth.presentation.intro.IntroAction
 import com.sri.auth.presentation.register.RegisterAction
 import com.sri.auth.presentation.register.RegisterEvent
+import com.sri.core.presentation.ui.asUiText
+import com.sri.core.domain.util.DataError
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import com.sri.core.domain.util.Result
+import com.sri.core.presentation.ui.UiText
 
 class LoginViewModel(
     private val userDataValidator: UserDataValidator,
-    private val repository: AuthRepository
+    private val authRepository: AuthRepository
 ): ViewModel() {
     var state by mutableStateOf(LoginState())
         private set
@@ -53,7 +58,7 @@ class LoginViewModel(
 
     fun onAction(action: LoginAction) {
         when (action) {
-            LoginAction.OnLoginClick -> TODO()
+            LoginAction.OnLoginClick -> login()
             is LoginAction.OnEmailChanged -> {
 
                 val newEmail = action.email
@@ -91,5 +96,38 @@ class LoginViewModel(
             else -> Unit
         }
 
+    }
+
+    private fun login() {
+      viewModelScope.launch {
+          state = state.copy(isLoggingIn = true)
+          val result = authRepository.login(
+              email = state.email.text.toString().trim(),
+              password = state.password.text.toString()
+          )
+          state = state.copy(isLoggingIn = false)
+
+          when(result){
+              is Result.Error<*> -> {
+                  if(result.error == DataError.Network.UNAUTHORIZED){
+
+                      eventChannel.send(LoginEvent.Error(
+                          UiText.StringResource(R.string.error_email_password_incorrect)
+                      )
+                      )
+
+                  }else{
+
+                      //eventChannel.send(LoginEvent.Error(result.error.asUiText()))
+                      eventChannel.send(LoginEvent.Error(UiText.StringResource(R.string.error_unknown)))
+
+                  }
+
+              }
+              is Result.Success<*> -> {
+                  eventChannel.send(LoginEvent.LoginSuccess)
+              }
+          }
+      }
     }
 }

@@ -25,9 +25,7 @@ fun DataError.asUiText(): UiText{
         DataError.Network.SERIALIZATION -> UiText.StringResource(
             R.string.error_serialization
         )
-        else -> UiText.StringResource(
-            R.string.error_unknown
-        )
+        else -> UiText.StringResource(R.string.error_unknown)
     }
 
 }

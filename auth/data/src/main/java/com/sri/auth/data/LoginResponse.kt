@@ -1,10 +1,12 @@
-package com.sri.core.data.auth
+package com.sri.auth.data
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class AuthInfoSerializable(
+data class LoginResponse(
     val accessToken: String,
     val refreshToken: String,
+    val accessTokenExpirationTimestamp: Long,
     val userId: String,
+
 )

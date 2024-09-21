@@ -168,7 +168,7 @@ private fun LoginScreen(
             RunActionButton(
                 text = stringResource(id = R.string.login),
                 isLoading = state.isLoggingIn,
-                enabled = state.canLogin,
+                enabled = state.canLogin && !state.isLoggingIn,
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {
                     onAction(LoginAction.OnLoginClick)
