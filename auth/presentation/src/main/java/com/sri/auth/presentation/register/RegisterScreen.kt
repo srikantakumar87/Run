@@ -49,6 +49,7 @@ import org.koin.androidx.compose.koinViewModel
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.TextStyle
 import com.sri.auth.domain.UserDataValidator
+import com.sri.auth.presentation.login.LoginAction
 import com.sri.core.presentation.designsystem.components.RunActionButton
 import com.sri.core.presentation.designsystem.components.RunPasswordTextField
 import com.sri.core.presentation.designsystem.components.SBasicSecureTextField
@@ -93,7 +94,16 @@ fun RegisterScreenRoot(
 
     RegisterScreen(
         state = viewModel.state,
-        onAction = viewModel::onAction
+        onAction = { action ->
+            when(action) {
+                is RegisterAction.OnLoginClick -> onSignInClick()
+                else -> Unit
+            }
+            viewModel.onAction(action)
+
+
+
+        }
     )
 }
 

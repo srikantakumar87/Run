@@ -78,7 +78,7 @@ class RegisterViewModel(
                 )
             }
 
-            RegisterAction.OnLoginClick -> TODO()
+
             RegisterAction.OnRegisterClick -> register()
 
 
@@ -110,6 +110,7 @@ class RegisterViewModel(
                     )
 
             }
+            else -> Unit
         }
     }
 
