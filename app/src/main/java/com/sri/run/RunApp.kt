@@ -5,6 +5,7 @@ import com.sri.auth.data.di.authDataModule
 import com.sri.auth.presentation.di.authViewModelModule
 import com.sri.core.data.di.coreDataModule
 import com.sri.run.di.appModule
+import com.sri.runs.presentation.di.runViewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin
@@ -25,7 +26,12 @@ class RunApp: Application() {
                 authDataModule,
                 authViewModelModule,
                 appModule,
-                coreDataModule
+                coreDataModule,
+                runViewModelModule
+
+
+
+
 
             )
 

@@ -68,6 +68,8 @@ dependencies {
 
     api(libs.core)
     implementation(project(":auth:data"))
+    implementation(project(":runs:presentation"))
+    implementation(project(":runs:presentation"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
