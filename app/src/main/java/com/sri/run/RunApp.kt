@@ -27,7 +27,8 @@ class RunApp: Application() {
                 authViewModelModule,
                 appModule,
                 coreDataModule,
-                runViewModelModule
+                runViewModelModule,
+
 
 
 
