@@ -70,6 +70,7 @@ dependencies {
     implementation(project(":auth:data"))
     implementation(project(":runs:presentation"))
     implementation(project(":runs:presentation"))
+    implementation(project(":runs:location"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

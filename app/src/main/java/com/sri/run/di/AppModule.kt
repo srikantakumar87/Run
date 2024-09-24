@@ -12,6 +12,8 @@ import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import com.sri.run.MainViewModel
+import com.sri.run.RunApp
+import kotlinx.coroutines.CoroutineScope
 
 val appModule = module {
 
@@ -26,6 +28,9 @@ val appModule = module {
        )
     }
 
+    single<CoroutineScope>{
+        (androidApplication() as RunApp).applicationScope
+    }
     viewModelOf(::MainViewModel)
 
 }
