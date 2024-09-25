@@ -1,9 +1,8 @@
 package com.sri.runs.presentation.active_run
 
-import android.location.Location
+import com.sri.core.domain.location.Location
 import com.sri.runs.domain.RunData
 import kotlin.time.Duration
-import kotlin.time.Duration.Companion.minutes
 
 data class ActiveRunState(
     val elapsedTime: Duration = Duration.ZERO,

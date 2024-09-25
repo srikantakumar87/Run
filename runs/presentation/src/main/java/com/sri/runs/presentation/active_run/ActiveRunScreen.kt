@@ -30,7 +30,6 @@ import com.sri.core.presentation.designsystem.components.RunFloatingActionButton
 import com.sri.core.presentation.designsystem.components.RunOutlinedActionButton
 import com.sri.core.presentation.designsystem.components.RunScaffold
 import com.sri.core.presentation.designsystem.components.RunToolbar
-import com.sri.core.presentation.ui.UiText
 import com.sri.runs.presentation.R
 import com.sri.runs.presentation.active_run.components.RunDataCard
 import com.sri.runs.presentation.util.hasLocationPermission
