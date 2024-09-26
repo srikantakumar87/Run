@@ -32,6 +32,7 @@ import com.sri.core.presentation.designsystem.components.RunScaffold
 import com.sri.core.presentation.designsystem.components.RunToolbar
 import com.sri.runs.presentation.R
 import com.sri.runs.presentation.active_run.components.RunDataCard
+import com.sri.runs.presentation.active_run.maps.TrackerMap
 import com.sri.runs.presentation.util.hasLocationPermission
 import com.sri.runs.presentation.util.hasNotificationPermission
 import com.sri.runs.presentation.util.shouldShowLocationPermissionRationale
@@ -162,6 +163,14 @@ private fun ActiveRunScreen(
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.surface)
         ){
+            TrackerMap(
+                isRunFinished = state.isRunFinished,
+                currentLocation = state.currentLocation,
+                locations = state.runData.locations,
+                onSnapshot = {},
+                modifier = Modifier.fillMaxSize()
+
+            )
             RunDataCard(
                 elapsedTime = state.elapsedTime,
                 runData = state.runData,

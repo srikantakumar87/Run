@@ -13,6 +13,7 @@ plugins {
 }
 
 android {
+
     namespace = "com.sri.run"
 
 
@@ -28,6 +29,8 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+
     }
 
 
