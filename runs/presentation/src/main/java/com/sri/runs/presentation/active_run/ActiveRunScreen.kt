@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import com.sri.core.presentation.designsystem.RunTheme
 import com.sri.core.presentation.designsystem.StartIcon
 import com.sri.core.presentation.designsystem.StopIcon
+import com.sri.core.presentation.designsystem.components.RunActionButton
 import com.sri.core.presentation.designsystem.components.RunDialog
 //import com.sri.core.presentation.designsystem.components.RunDialog
 import com.sri.core.presentation.designsystem.components.RunFloatingActionButton
@@ -182,6 +183,46 @@ private fun ActiveRunScreen(
         }
     }
 
+    if(!state.showLocationRationale && state.hasStartedRunning){
+        RunDialog(
+            title = stringResource(id= R.string.running_is_paused),
+            onDismiss = {
+                onAction(ActiveRunAction.OnResumeRunClick)
+            },
+            description = stringResource(id = R.string.resume_or_finished_run
+            ),
+            primaryButton = {
+                RunActionButton(
+                    text = stringResource(id= R.string.resume),
+                    isLoading =false,
+                    onClick = {
+                        println("resume clicked")
+                        onAction(ActiveRunAction.OnResumeRunClick)
+                    }
+                    ,
+                    modifier = Modifier.weight(1f)
+
+
+                )
+
+            },
+            secondaryButton = {
+                RunOutlinedActionButton(
+                    text = stringResource(id= R.string.finish),
+                    isLoading = state.isSavingRun,
+                    onClick = {
+                        onAction(ActiveRunAction.OnFinishRunClick)
+                    }
+                    ,
+                    modifier = Modifier.weight(1f)
+                )
+            }
+            ,
+            modifier = Modifier
+
+        )
+    }
+
     if(state.showLocationRationale || state.showNotificationRationale){
         RunDialog(
             title = stringResource(id= R.string.permission_required),
@@ -207,7 +248,8 @@ private fun ActiveRunScreen(
                         onAction(ActiveRunAction.DismissRationaleDialog)
                         permissionLauncher.requestRunPermissions(context)
 
-                    }
+                    },
+                    modifier = Modifier.weight(1f)
                 )
             },
             secondaryButton = {},

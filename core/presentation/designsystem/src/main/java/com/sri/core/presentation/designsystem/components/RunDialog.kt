@@ -5,6 +5,7 @@ import androidx.compose.foundation.content.MediaType.Companion.Text
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,9 +26,9 @@ fun RunDialog(
     title: String,
     onDismiss: () -> Unit,
     description: String,
-    primaryButton: @Composable () -> Unit,
+    primaryButton: @Composable RowScope.() -> Unit,
     modifier: Modifier,
-    secondaryButton: @Composable () -> Unit,
+    secondaryButton: @Composable RowScope.() -> Unit,
 
 ){
     Dialog(
