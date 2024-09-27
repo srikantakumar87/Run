@@ -183,7 +183,7 @@ private fun ActiveRunScreen(
         }
     }
 
-    if(!state.showLocationRationale && state.hasStartedRunning){
+    if (!state.shouldTrack && state.hasStartedRunning) {
         RunDialog(
             title = stringResource(id= R.string.running_is_paused),
             onDismiss = {
