@@ -19,4 +19,11 @@
     <string name="resume">Resume</string>
     <string name="finish">Finish</string>
     <string name="active_run">Active Run</string>
+    <string name="run_map">Run Map</string>
+    <string name="error_couldnt_load_image">could not load image</string>
+    <string name="total_running_time">Total Running Time</string>
+    <string name="avg_speed">Ø Speed</string>
+    <string name="max_speed">Max Speed</string>
+    <string name="total_elevation">Total Elevation</string>
+    <string name="delete">Delete</string>
 </resources>

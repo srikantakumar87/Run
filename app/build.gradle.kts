@@ -5,7 +5,7 @@ plugins {
 
 
 
-    alias(libs.plugins.mapsplatform.secrets.plugin)
+
     alias(libs.plugins.compose.compiler)
 
     //kotlin("jvm") version "2.0.20"
