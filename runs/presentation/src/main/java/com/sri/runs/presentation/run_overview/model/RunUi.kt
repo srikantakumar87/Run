@@ -1,4 +1,4 @@
-package com.sri.runs.presentation.active_run.model
+package com.sri.runs.presentation.run_overview.model
 
 data class RunUi(
     val id: String?,

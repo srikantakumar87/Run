@@ -4,6 +4,7 @@ import android.app.Application
 import com.sri.auth.data.di.authDataModule
 import com.sri.auth.presentation.di.authViewModelModule
 import com.sri.core.data.di.coreDataModule
+import com.sri.core.database.di.databaseModule
 import com.sri.run.di.appModule
 import com.sri.runs.location.di.locationModule
 import com.sri.runs.presentation.di.RunPresentationModule
@@ -33,7 +34,8 @@ class RunApp: Application() {
                 appModule,
                 coreDataModule,
                 RunPresentationModule,
-                locationModule
+                locationModule,
+                databaseModule
 
 
 

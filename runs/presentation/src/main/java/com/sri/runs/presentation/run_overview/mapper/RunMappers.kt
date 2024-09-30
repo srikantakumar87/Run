@@ -6,7 +6,7 @@ import com.sri.core.presentation.ui.toFormattedKm
 import com.sri.core.presentation.ui.toFormattedKmh
 import com.sri.core.presentation.ui.toFormattedMeters
 import com.sri.core.presentation.ui.toFormattedPace
-import com.sri.runs.presentation.active_run.model.RunUi
+import com.sri.runs.presentation.run_overview.model.RunUi
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
@@ -22,7 +22,7 @@ fun Run.toRunUi(): RunUi {
         dateTime = formatedDateTime,
         distance = distanceInKm.toFormattedKm(),
         avgSpeed = avgSpeedKmh.toFormattedKmh(),
-        maxSpeed = maxSpeed.toFormattedKmh(),
+        maxSpeed = maxSpeedKmh.toFormattedKmh(),
         pace = duration.toFormattedPace(distanceInKm),
         totalElevation = totalElevationMeters.toFormattedMeters(),
         mapPictureUrl = mapPictureUrl

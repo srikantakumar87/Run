@@ -50,8 +50,8 @@ import com.sri.core.presentation.designsystem.RunTheme
 import com.sri.core.presentation.ui.UiText
 import com.sri.runs.domain.RunningTracker
 import com.sri.runs.presentation.R
-import com.sri.runs.presentation.active_run.model.RunDataUi
-import com.sri.runs.presentation.active_run.model.RunUi
+import com.sri.runs.presentation.run_overview.model.RunDataUi
+import com.sri.runs.presentation.run_overview.model.RunUi
 import com.sri.runs.presentation.run_overview.mapper.toRunUi
 import java.time.ZonedDateTime
 import kotlin.math.max
@@ -328,7 +328,7 @@ private fun RunListItemPreview()
             dateTimeUtc = ZonedDateTime.now(),
             distanceMeters = 1000,
             location = Location(0.0, 0.0),
-            maxSpeed = 10.0,
+            maxSpeedKmh = 10.0,
             totalElevationMeters = 0,
             mapPictureUrl = null
 
