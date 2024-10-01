@@ -74,6 +74,7 @@ dependencies {
     implementation(project(":runs:presentation"))
     implementation(project(":runs:presentation"))
     implementation(project(":runs:location"))
+    implementation(project(":runs:network"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

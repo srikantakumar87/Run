@@ -4,6 +4,8 @@ import android.content.SharedPreferences
 import com.sri.core.data.auth.EncryptedSessionStorage
 import com.sri.core.data.networking.HttpClientFactory
 import com.sri.core.domain.SessionStorage
+import com.sri.core.domain.runs.RunRepository
+import com.sri.core.domain.runs.OfflineFirstRunRepository
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
@@ -13,4 +15,5 @@ val coreDataModule = module {
         HttpClientFactory(get()).build()
     }
     singleOf(::EncryptedSessionStorage).bind<SessionStorage>()
+    singleOf(::OfflineFirstRunRepository).bind<RunRepository>()
 }

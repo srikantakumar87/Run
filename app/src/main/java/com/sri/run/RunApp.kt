@@ -7,6 +7,7 @@ import com.sri.core.data.di.coreDataModule
 import com.sri.core.database.di.databaseModule
 import com.sri.run.di.appModule
 import com.sri.runs.location.di.locationModule
+import com.sri.runs.network.di.networkModule
 import com.sri.runs.presentation.di.RunPresentationModule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -35,7 +36,8 @@ class RunApp: Application() {
                 coreDataModule,
                 RunPresentationModule,
                 locationModule,
-                databaseModule
+                databaseModule,
+                networkModule
 
 
 

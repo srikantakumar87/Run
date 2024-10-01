@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Build
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.ActivityResultLauncher
@@ -32,6 +33,7 @@ import com.sri.core.presentation.designsystem.components.RunFloatingActionButton
 import com.sri.core.presentation.designsystem.components.RunOutlinedActionButton
 import com.sri.core.presentation.designsystem.components.RunScaffold
 import com.sri.core.presentation.designsystem.components.RunToolbar
+import com.sri.core.presentation.ui.ObserveAsEvent
 import com.sri.runs.presentation.R
 import com.sri.runs.presentation.active_run.components.RunDataCard
 import com.sri.runs.presentation.active_run.maps.TrackerMap
@@ -50,14 +52,46 @@ import java.io.ByteArrayOutputStream
 
 @Composable
 fun ActiveRunScreenRoot(
+    onFinish: () -> Unit,
+    onBack: () -> Unit,
     onServiceToggle: (isServiceRunning: Boolean) -> Unit,
     viewModel: ActiveRunViewModel = koinViewModel()
 ){
+    val context = LocalContext.current
+    ObserveAsEvent(
+        flow = viewModel.events
+    ) { event ->
+        when (event) {
+            is ActiveRunEvent.Error -> {
+                Toast.makeText(
+                    context,
+                    event.error.asString(context),
+                    Toast.LENGTH_LONG
+                ).show()
+
+            }
+
+            ActiveRunEvent.RunSaved -> onFinish()
+            ActiveRunEvent.Success -> TODO()
+        }
+    }
 
     ActiveRunScreen(
         state = viewModel.state,
         onServiceToggle = onServiceToggle,
-        onAction = viewModel::onAction
+        onAction = { action ->
+            when (action) {
+                is ActiveRunAction.OnBackClick -> {
+                    if(!viewModel.state.hasStartedRunning){
+                        onBack()
+                    }
+
+                }
+
+                else -> Unit
+            }
+            viewModel.onAction(action)
+        }
     )
 }
 
