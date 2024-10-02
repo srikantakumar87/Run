@@ -9,10 +9,12 @@ import com.sri.run.di.appModule
 import com.sri.runs.location.di.locationModule
 import com.sri.runs.network.di.networkModule
 import com.sri.runs.presentation.di.RunPresentationModule
+import com.sri.runs.data.di.runDataModule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
+import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.context.GlobalContext.startKoin
 import timber.log.Timber
 
@@ -29,6 +31,7 @@ class RunApp: Application() {
         startKoin {
             androidLogger()
             androidContext(this@RunApp)
+            workManagerFactory()
             modules(
                 authDataModule,
                 authViewModelModule,
@@ -37,7 +40,9 @@ class RunApp: Application() {
                 RunPresentationModule,
                 locationModule,
                 databaseModule,
-                networkModule
+                networkModule,
+                runDataModule
+
 
 
 
