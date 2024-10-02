@@ -43,7 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.SubcomposeAsyncImage
 import com.sri.core.domain.location.Location
-import com.sri.core.domain.runs.Run
+import com.sri.core.data.runs.Run
 import com.sri.core.presentation.designsystem.CalendarIcon
 import com.sri.core.presentation.designsystem.RunOutlinedIcon
 import com.sri.core.presentation.designsystem.RunTheme
@@ -322,7 +322,7 @@ private fun RunListItemPreview()
 {
     RunTheme {
     RunListItem(
-        runUi = Run(
+        runUi = com.sri.core.data.runs.Run(
             id = "12",
             duration = 10.minutes + 30.seconds,
             dateTimeUtc = ZonedDateTime.now(),

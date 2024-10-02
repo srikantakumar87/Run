@@ -5,14 +5,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sri.core.domain.runs.RunRepository
+import com.sri.core.data.runs.RunRepository
 import com.sri.runs.presentation.run_overview.mapper.toRunUi
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class RunOverviewViewModel(
-    private val runRepository: RunRepository
+    private val runRepository: com.sri.core.data.runs.RunRepository
 ): ViewModel()  {
 
     var state by mutableStateOf(RunOverviewState())
@@ -28,6 +28,7 @@ class RunOverviewViewModel(
         }.launchIn(viewModelScope)
 
         viewModelScope.launch {
+            runRepository.syncPendingRuns()
             runRepository.fetchRuns()
         }
     }

@@ -7,8 +7,8 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sri.core.domain.location.Location
-import com.sri.core.domain.runs.Run
-import com.sri.core.domain.runs.RunRepository
+import com.sri.core.data.runs.Run
+import com.sri.core.data.runs.RunRepository
 import com.sri.runs.domain.LocationDataCalculator
 import com.sri.runs.domain.RunningTracker
 import com.sri.runs.presentation.active_run.service.ActiveRunService
@@ -28,7 +28,7 @@ import com.sri.core.presentation.ui.asUiText
 
 class ActiveRunViewModel(
     private val runningTracker: RunningTracker,
-    private val runRepository: RunRepository
+    private val runRepository: com.sri.core.data.runs.RunRepository
 ): ViewModel() {
 
     var state by mutableStateOf(ActiveRunState(
@@ -153,13 +153,13 @@ class ActiveRunViewModel(
             return
         }
         viewModelScope.launch {
-            val run = Run(
+            val run = com.sri.core.data.runs.Run(
                 id = null,
                 duration = state.elapsedTime,
                 dateTimeUtc = ZonedDateTime.now()
                     .withZoneSameInstant(ZoneId.of("UTC")),
                 distanceMeters = state.runData.distanceMeters,
-                location = state.currentLocation ?: Location(0.0,0.0),
+                location = state.currentLocation ?: Location(0.0, 0.0),
                 maxSpeedKmh = LocationDataCalculator.getMaxSpeedKmh(locations),
                 totalElevationMeters = LocationDataCalculator.getTotalElevationMeters(locations),
                 mapPictureUrl = null

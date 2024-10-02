@@ -1,7 +1,7 @@
 package com.sri.runs.network
 
+import com.sri.core.data.runs.Run
 import com.sri.core.domain.location.Location
-import com.sri.core.domain.runs.Run
 import java.time.Instant
 import java.time.ZoneId
 import kotlin.time.Duration.Companion.milliseconds

@@ -5,7 +5,7 @@ import com.sri.core.database.dao.RunDao
 import com.sri.core.database.mappers.toRun
 import com.sri.core.database.mappers.toRunEntity
 import com.sri.core.domain.runs.LocalRunDataSource
-import com.sri.core.domain.runs.Run
+import com.sri.core.data.runs.Run
 import com.sri.core.domain.runs.RunId
 import com.sri.core.domain.util.DataError
 import com.sri.core.domain.util.Result
@@ -15,14 +15,14 @@ import kotlinx.coroutines.flow.map
 class RoomLocalRunDataSource(
     private val runDao: RunDao
 ): LocalRunDataSource {
-    override fun getRuns(): Flow<List<Run>> {
+    override fun getRuns(): Flow<List<com.sri.core.data.runs.Run>> {
         return runDao.getRuns()
             .map { runEntities ->
                 runEntities.map { it.toRun() }
             }
     }
 
-    override suspend fun upsertRun(run: Run): Result<RunId, DataError.Local> {
+    override suspend fun upsertRun(run: com.sri.core.data.runs.Run): Result<RunId, DataError.Local> {
         return try {
             val entity = run.toRunEntity()
             runDao.upsertRun(entity)
@@ -32,7 +32,7 @@ class RoomLocalRunDataSource(
         }
     }
 
-    override suspend fun upsertRuns(runs: List<Run>): Result<List<RunId>, DataError.Local> {
+    override suspend fun upsertRuns(runs: List<com.sri.core.data.runs.Run>): Result<List<RunId>, DataError.Local> {
         return try {
             val entities = runs.map { it.toRunEntity() }
             runDao.upsertRuns(entities)

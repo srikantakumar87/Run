@@ -18,6 +18,7 @@ val databaseModule = module {
         ).build()
     }
     single { get<RunDatabase>().runDao }
+    single { get<RunDatabase>().runPendingSyncDao }
 
-    singleOf(::RoomLocalRunDataSource).bind<LocalRunDataSource>()
+    singleOf(::RoomLocalRunDataSource).bind<com.sri.core.domain.runs.LocalRunDataSource>()
 }
