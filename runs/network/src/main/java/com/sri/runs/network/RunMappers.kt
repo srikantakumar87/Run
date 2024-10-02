@@ -1,6 +1,6 @@
 package com.sri.runs.network
 
-import com.sri.core.data.runs.Run
+import com.sri.core.domain.runs.Run
 import com.sri.core.domain.location.Location
 import java.time.Instant
 import java.time.ZoneId

@@ -7,8 +7,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sri.core.domain.location.Location
-import com.sri.core.data.runs.Run
-import com.sri.core.data.runs.RunRepository
+import com.sri.core.domain.runs.Run
 import com.sri.runs.domain.LocationDataCalculator
 import com.sri.runs.domain.RunningTracker
 import com.sri.runs.presentation.active_run.service.ActiveRunService
@@ -153,7 +152,7 @@ class ActiveRunViewModel(
             return
         }
         viewModelScope.launch {
-            val run = com.sri.core.data.runs.Run(
+            val run = Run(
                 id = null,
                 duration = state.elapsedTime,
                 dateTimeUtc = ZonedDateTime.now()

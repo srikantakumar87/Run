@@ -6,7 +6,9 @@ import com.sri.core.database.mappers.toRun
 import com.sri.core.domain.SessionStorage
 import com.sri.core.domain.runs.LocalRunDataSource
 import com.sri.core.domain.runs.RemoteRunDataSource
+import com.sri.core.domain.runs.Run
 import com.sri.core.domain.runs.RunId
+import com.sri.core.domain.runs.SyncRunScheduler
 import com.sri.core.domain.util.DataError
 import com.sri.core.domain.util.EmptyResult
 import com.sri.core.domain.util.Result
@@ -23,7 +25,8 @@ class OfflineFirstRunRepository(
     private val remoteRunDataSource: RemoteRunDataSource,
     private val applicationScope: CoroutineScope,
     private val runPendingSyncDao: RunPendingSyncDao,
-    private val sessionStorage: SessionStorage
+    private val sessionStorage: SessionStorage,
+    private val syncRunScheduler: SyncRunScheduler
 ): RunRepository {
 
     override fun getRuns(): Flow<List<Run>> {
@@ -55,6 +58,13 @@ class OfflineFirstRunRepository(
 
         return when(remoteResult) {
             is Result.Error -> {
+                applicationScope.launch {
+                syncRunScheduler.scheduleSync(
+                    type = SyncRunScheduler.SyncType.CreateRun(
+                        run = runWithId,
+                        mapPictureBytes = mapPicture
+                    )
+                )}.join()
                 Result.Success(Unit)
             }
             is Result.Success -> {
@@ -80,6 +90,18 @@ class OfflineFirstRunRepository(
         val remoteResult = applicationScope.async {
             remoteRunDataSource.deleteRun(id)
         }.await()
+
+        if(remoteResult is Result.Error) {
+            applicationScope.launch {
+
+                syncRunScheduler.scheduleSync(
+                    type = SyncRunScheduler.SyncType.DeleteRun(id)
+                )
+
+            }.join()
+
+
+        }
     }
 
     override suspend fun syncPendingRuns() {

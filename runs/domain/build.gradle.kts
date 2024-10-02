@@ -2,7 +2,8 @@ plugins {
     alias(libs.plugins.run.jvm.library)
 }
 
-dependencies{
+dependencies {
     implementation(libs.kotlinx.coroutines.core)
-    implementation(project(":core:domain"))
+
+    implementation(projects.core.domain)
 }

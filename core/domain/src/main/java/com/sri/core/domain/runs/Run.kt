@@ -1,4 +1,4 @@
-package com.sri.core.data.runs
+package com.sri.core.domain.runs
 
 import com.sri.core.domain.location.Location
 import java.time.ZonedDateTime

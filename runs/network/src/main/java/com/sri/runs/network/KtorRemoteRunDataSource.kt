@@ -5,7 +5,7 @@ import com.sri.core.data.networking.delete
 import com.sri.core.data.networking.get
 import com.sri.core.data.networking.safeCall
 import com.sri.core.domain.runs.RemoteRunDataSource
-import com.sri.core.data.runs.Run
+import com.sri.core.domain.runs.Run
 import com.sri.core.domain.util.DataError
 import com.sri.core.domain.util.EmptyResult
 import com.sri.core.domain.util.Result

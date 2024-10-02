@@ -1,6 +1,5 @@
 package com.sri.core.domain.runs
 
-import com.sri.core.data.runs.Run
 import com.sri.core.domain.util.DataError
 import com.sri.core.domain.util.Result
 import kotlinx.coroutines.flow.Flow

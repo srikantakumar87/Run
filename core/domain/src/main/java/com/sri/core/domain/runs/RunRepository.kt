@@ -1,5 +1,6 @@
 package com.sri.core.data.runs
 
+import com.sri.core.domain.runs.Run
 import com.sri.core.domain.runs.RunId
 import com.sri.core.domain.util.DataError
 import com.sri.core.domain.util.EmptyResult
