@@ -12,14 +12,12 @@ import com.sri.core.database.entity.RunPendingSyncEntity
     entities = [
         RunEntity::class,
         RunPendingSyncEntity::class,
-        DeletedRunSyncEntity::class,
-
-
-               ],
-    version = 1,
-
+        DeletedRunSyncEntity::class
+    ],
+    version = 1
 )
-abstract class RunDatabase: RoomDatabase() {
-    abstract val runPendingSyncDao: RunPendingSyncDao
+abstract class RunDatabase : RoomDatabase() {
+
     abstract val runDao: RunDao
+    abstract val runPendingSyncDao: RunPendingSyncDao
 }

@@ -1,11 +1,9 @@
 package com.sri.runs.data
 
 import android.content.Context
-import android.content.ContextParams
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.sri.core.data.runs.RunRepository
-import com.sri.core.domain.util.DataError
+import com.sri.core.domain.runs.RunRepository
 
 class FetchRunsWorker(
     context: Context,

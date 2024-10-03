@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sri.core.domain.location.Location
 import com.sri.core.domain.runs.Run
+import com.sri.core.domain.runs.RunRepository
 import com.sri.runs.domain.LocationDataCalculator
 import com.sri.runs.domain.RunningTracker
 import com.sri.runs.presentation.active_run.service.ActiveRunService
@@ -27,7 +28,7 @@ import com.sri.core.presentation.ui.asUiText
 
 class ActiveRunViewModel(
     private val runningTracker: RunningTracker,
-    private val runRepository: com.sri.core.data.runs.RunRepository
+    private val runRepository: RunRepository
 ): ViewModel() {
 
     var state by mutableStateOf(ActiveRunState(

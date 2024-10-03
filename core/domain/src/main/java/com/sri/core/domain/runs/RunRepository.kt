@@ -1,4 +1,4 @@
-package com.sri.core.data.runs
+package com.sri.core.domain.runs
 
 import com.sri.core.domain.runs.Run
 import com.sri.core.domain.runs.RunId
@@ -12,6 +12,10 @@ interface RunRepository {
     suspend fun upsertRun(run: Run, mapPicture: ByteArray): EmptyResult<DataError>
     suspend fun deleteRun(id: RunId)
     suspend fun syncPendingRuns()
+    suspend fun logout(): EmptyResult<DataError.Network>
+    suspend fun deleteAllRuns()
+
+
 
 
 }
