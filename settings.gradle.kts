@@ -36,3 +36,7 @@ include(":runs:location")
 include(":runs:network")
 
 
+include(":analytics:data")
+include(":analytics:domain")
+include(":analytics:presentation")
+include(":analytics:analytics_feature")
