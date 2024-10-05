@@ -19,6 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sri.analytics.presentation.components.AnalyticsCard
+import com.sri.analytics.presentation.components.AnalyticsGraphCard
 import com.sri.core.presentation.designsystem.RunTheme
 import com.sri.core.presentation.designsystem.components.RunScaffold
 import com.sri.core.presentation.designsystem.components.RunToolbar
@@ -122,6 +123,29 @@ private fun AnalyticsDashboardScreen(
                         title = stringResource(id = R.string.fastest_ever_run),
                         value = state.avgPace,
                         modifier = Modifier.weight(1f)
+                    )
+
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp)
+                ) {
+                    AnalyticsCard(
+                        title = stringResource(id = R.string.fastest_ever_run),
+                        value = state.avgPace,
+                        modifier = Modifier.weight(1f)
+                    )
+
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp)
+                ) {
+                    AnalyticsGraphCard(
+                        title = stringResource(id = R.string.avg_distance_per_run_over_time),
+                        modifier = Modifier
                     )
 
                 }
